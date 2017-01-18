@@ -153,4 +153,18 @@ texinfo_documents = [
 ]
 
 
+from sphinx.apidoc import main
 
+def run_apidoc(_):
+    cwd = os.path.abspath(os.path.dirname(__file__))
+    source_pathname = os.path.join(cwd, "../../source")
+    package_names = ["starling"]
+
+    for package_name in package_names:
+        output_pathname = os.path.join(cwd, "api", package_name)
+
+        main(["--separate", "-o", output_pathname, os.path.join(source_pathname, package_name), "--force"])
+
+
+def setup(app):
+    app.connect("builder-inited", run_apidoc)

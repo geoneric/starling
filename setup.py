@@ -27,7 +27,7 @@ setuptools.setup(
     author="Kor de Jong",
     author_email="k.dejong@geoneric.eu",
     url="https://github.com/geoneric/starling",
-    packages=setuptools.find_packages("source/starling", exclude=["test.*", "*.test", "*.test.*", "test"]),
+    packages=setuptools.find_packages("source/starling"),
     package_dir={"": "source/starling"},
     install_requires=[
         # "docopt>=xxx",

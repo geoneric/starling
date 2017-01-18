@@ -10,7 +10,7 @@ Welcome to Starling's documentation!
    :maxdepth: 2
    :caption: Contents:
 
-   api/modules
+   api/starling/modules
 
 
 Indices and tables
