@@ -1,2 +1,3 @@
-# service_base
+Starling
+========
 Goodies for implementing services
