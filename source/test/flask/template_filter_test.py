@@ -1,3 +1,4 @@
+from starling import time_point
 from test.test_case import TestCase
 from starling.flask.template_filter import *
 
@@ -16,3 +17,9 @@ class TemplateFilterTest(TestCase):
         self.assertEqual(format_pathname("/tmp/blah", 10), "/tmp/blah")
         self.assertEqual(format_pathname("/tmp/blaah", 10), "/tmp/blaah")
         self.assertEqual(format_pathname("/tmp/blaaah", 10), ".../blaaah")
+
+    def test_format_time_point(self):
+
+        now_string = time_point.utc_now().isoformat()
+
+        self.assertDoesNotRaise(format_time_point, now_string)
