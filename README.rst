@@ -5,4 +5,7 @@ Goodies for implementing services
 
 More information about Starling:
 
-- Python package: https://pypi.python.org/pypi/starling
+|                  |                                           |
+| -----------------|-------------------------------------------|
+| Documentation    | http://starling.readthedocs.io/en/latest/ |
+| Python package   | https://pypi.python.org/pypi/starling     |
