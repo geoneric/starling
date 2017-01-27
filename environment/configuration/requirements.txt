@@ -1,3 +1,4 @@
 docopt==0.6.2
+flask=0.12
 sphinx==1.5.1
 tzlocal==1.3

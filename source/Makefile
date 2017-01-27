@@ -1,2 +1,2 @@
 run_test:
-	python -m unittest discover ./test/flask *_test.py
+	python -m unittest discover ./test *_test.py

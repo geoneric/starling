@@ -11,6 +11,7 @@ Welcome to Starling's documentation!
    :caption: Contents:
 
    api/starling/modules
+   changes
 
 
 Indices and tables
