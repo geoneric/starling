@@ -1,13 +1,11 @@
 #!/usr/bin/env python
-from setuptools.command.build_ext import build_ext
 import codecs
-import glob
 import os
 import setuptools
 import sys
 
 
-__version__ = "0.0.3"
+__version__ = "0.0.4"
 
 
 here = os.path.abspath(os.path.dirname(__file__))
@@ -27,8 +25,8 @@ setuptools.setup(
     author="Kor de Jong",
     author_email="k.dejong@geoneric.eu",
     url="https://github.com/geoneric/starling",
-    packages=setuptools.find_packages("source/starling"),
-    package_dir={"": "source/starling"},
+    packages=setuptools.find_packages(),  # "source"),
+    # package_dir={"": "source"},
     install_requires=[
         "flask>=0.11",
         "tzlocal>=1.3",
@@ -48,4 +46,5 @@ setuptools.setup(
         "Topic :: Software Development :: Libraries :: Python Modules",
     ],
     keywords="Starling, microservice, service, Flask",
+    zip_safe=True,
 )
