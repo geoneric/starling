@@ -30,7 +30,7 @@ setuptools.setup(
     packages=setuptools.find_packages("source/starling"),
     package_dir={"": "source/starling"},
     install_requires=[
-        "flask>=0.12",
+        "flask>=0.11",
         "tzlocal>=1.3",
     ],
     license="MIT License",
