@@ -7,7 +7,7 @@ import setuptools
 import sys
 
 
-__version__ = "0.0.1"
+__version__ = "0.0.2"
 
 
 here = os.path.abspath(os.path.dirname(__file__))
@@ -30,8 +30,8 @@ setuptools.setup(
     packages=setuptools.find_packages("source/starling"),
     package_dir={"": "source/starling"},
     install_requires=[
-        # "docopt>=xxx",
-        # "numpy>=xxx"
+        "flask>=0.12",
+        "tzlocal>=1.3",
     ],
     license="MIT License",
     classifiers=[
@@ -42,8 +42,6 @@ setuptools.setup(
         "Operating System :: MacOS :: MacOS X",
         "Operating System :: Unix",
         "Operating System :: Microsoft :: Windows",
-        "Programming Language :: Python :: 2",
-        "Programming Language :: Python :: 2.7",
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.5",
         "Topic :: Internet :: WWW/HTTP :: HTTP Servers",
