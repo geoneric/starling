@@ -2,6 +2,16 @@ Changes
 =======
 
 
+0.0.4
+-----
+- Fix setup.py
+
+
+0.0.3
+-----
+- Update required Flask version
+
+
 0.0.2
 -----
 - Add ``geoserver`` sub-package

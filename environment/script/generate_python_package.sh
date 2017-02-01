@@ -5,7 +5,7 @@ set -e
 # source_prefix="$PROJECTS/starling"
 tmp_prefix="$HOME/tmp/starling"
 # install_prefix="$tmp_prefix/install"
-starling_version="0.0.1"
+starling_version="0.0.4"
 
 # cd $source_prefix
 
@@ -15,15 +15,18 @@ python setup.py sdist
 
 # Install package in virtual environment and perform some tests.
 rm -fr $tmp_prefix/python
-virtualenv --system-site-package $tmp_prefix/python
+# virtualenv --system-site-package $tmp_prefix/python
+virtualenv $tmp_prefix/python
 source $tmp_prefix/python/bin/activate
-pip install --force-reinstall --upgrade --no-index --find-links=file://`pwd`/dist \
-    "starling==$starling_version"
+pip install --find-links=file://`pwd`/dist "starling==$starling_version"
+tree $tmp_prefix/python/lib/python*/site-packages/starling*
 
 
 echo "********************************************************"
+cd $HOME
 python -c \
-    "import starling; print(\"installed Starling version {}\".format(starling.__version__))"
+    "import starling, starling.flask, starling.time_point; print(\"installed Starling version {}\".format(starling.__version__))"
+cd -
 echo "********************************************************"
 
 

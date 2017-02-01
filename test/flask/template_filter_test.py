@@ -1,3 +1,4 @@
+from datetime import datetime
 from starling import time_point
 from test.test_case import TestCase
 from starling.flask.template_filter import *
@@ -20,6 +21,22 @@ class TemplateFilterTest(TestCase):
 
     def test_format_time_point(self):
 
+        # Aware time point.
         now_string = time_point.utc_now().isoformat()
 
         self.assertDoesNotRaise(format_time_point, now_string)
+
+        string = format_time_point(now_string)
+
+        self.assertDoesNotRaise(datetime.strptime, string,
+            "%Y-%m-%dT%H:%M:%S")
+
+        # Unaware time point.
+        now_string = datetime.utcnow().isoformat()
+
+        self.assertDoesNotRaise(format_time_point, now_string)
+
+        string = format_time_point(now_string)
+
+        self.assertDoesNotRaise(datetime.strptime, string,
+            "%Y-%m-%dT%H:%M:%S")

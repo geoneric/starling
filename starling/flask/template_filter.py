@@ -2,7 +2,7 @@
 Filters to be used in jinja2 templates
 """
 from datetime import datetime
-from tzlocal import get_localzone
+from ..time_point import *
 
 
 def format_pathname(
@@ -63,6 +63,14 @@ def format_time_point(
             time_point = datetime.strptime(time_point_string, format)
         except:
             pass
+    else:
+
+        format = "%Y-%m-%dT%H:%M:%S.%f"
+
+        try:
+            time_point = datetime.strptime(time_point_string, format)
+        except:
+            pass
 
     # TODO Handle other time formats.
 
@@ -71,5 +79,9 @@ def format_time_point(
             "time point must be formatted according to ISO 8601 "
             "('{}')".format(time_point_string))
 
-    return time_point.astimezone(get_localzone()).strftime(
-        "%Y-%m-%dT%H:%M:%S")
+    if not is_aware(time_point):
+        time_point = make_aware(time_point)
+
+    time_point = local_time_point(time_point)
+
+    return time_point.strftime("%Y-%m-%dT%H:%M:%S")

@@ -8,6 +8,6 @@ class TestCase(unittest.TestCase):
             *args):
         try:
             callable(*args)
-        except(Exception, exception):
+        except Exception as exception:
             self.fail(
                 "callable raised unexpected exception: {}".format(exception))
