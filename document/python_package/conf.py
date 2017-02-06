@@ -18,7 +18,7 @@
 #
 import os
 import sys
-sys.path.insert(0, os.path.abspath('../../source'))
+sys.path.insert(0, os.path.abspath('../..'))
 
 
 # -- General configuration ------------------------------------------------
@@ -166,7 +166,7 @@ from sphinx.apidoc import main
 
 def run_apidoc(_):
     cwd = os.path.abspath(os.path.dirname(__file__))
-    source_pathname = os.path.join(cwd, "../../source")
+    source_pathname = os.path.join(cwd, "../..")
     package_names = ["starling"]
 
     for package_name in package_names:
