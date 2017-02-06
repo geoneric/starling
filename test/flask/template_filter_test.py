@@ -19,6 +19,7 @@ class TemplateFilterTest(TestCase):
         self.assertEqual(format_pathname("/tmp/blaah", 10), "/tmp/blaah")
         self.assertEqual(format_pathname("/tmp/blaaah", 10), ".../blaaah")
 
+
     def test_format_time_point(self):
 
         # Aware time point.
@@ -40,3 +41,21 @@ class TemplateFilterTest(TestCase):
 
         self.assertDoesNotRaise(datetime.strptime, string,
             "%Y-%m-%dT%H:%M:%S")
+
+
+    def test_format_uuid(self):
+
+        uuid = "6b0bfe46-6c07-43b4-892d-79dd66af401a"
+
+        self.assertRaises(ValueError, format_uuid, uuid, 0)
+        self.assertRaises(ValueError, format_uuid, uuid, 1)
+        self.assertRaises(ValueError, format_uuid, uuid, 2)
+        self.assertRaises(ValueError, format_uuid, uuid, 3)
+        self.assertDoesNotRaise(format_uuid, uuid, 4)
+
+        self.assertEqual(format_uuid(uuid, 4), "6...")
+        self.assertEqual(format_uuid(uuid, 5), "6b...")
+        self.assertEqual(format_uuid(uuid, 10), "6b0bfe4...")
+        self.assertEqual(format_uuid(uuid), format_uuid(uuid, 10))
+        self.assertEqual(format_uuid(uuid, len(uuid)), uuid)
+        self.assertEqual(format_uuid(uuid, len(uuid) + 1), uuid)
