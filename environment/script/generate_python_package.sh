@@ -5,7 +5,7 @@ set -e
 # source_prefix="$PROJECTS/starling"
 tmp_prefix="$HOME/tmp/starling"
 # install_prefix="$tmp_prefix/install"
-starling_version="0.0.4"
+starling_version="0.0.5"
 
 # cd $source_prefix
 
@@ -32,4 +32,4 @@ echo "********************************************************"
 
 # Upload distributions.
 pip install twine
-twine upload dist/starling-${starling_version}.tar.gz
+# twine upload dist/starling-${starling_version}.tar.gz
