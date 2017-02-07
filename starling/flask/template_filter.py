@@ -2,6 +2,7 @@
 Filters to be used in jinja2 templates
 """
 from datetime import datetime
+import dateutil.parser
 from ..time_point import *
 
 
@@ -40,44 +41,12 @@ def format_time_point(
         to format
     :return: Formatted time point
     :rtype: str
-    :raises ValueError: If *time_point_string* is not formatted according to
-        ISO 8601
+    :raises ValueError: If *time_point_string* is not formatted by
+        dateutil.parser.parse
 
     See :py:meth:`datetime.datetime.isoformat` function for supported formats.
     """
-    # formats = [
-    #     "%Y-%m-%dT%H:%M:%S+HH:MM",
-    #     "%Y-%m-%dT%H:%M:%S.%f",
-    #     "%Y-%m-%dT%H:%M:%S",
-    # ]
-    time_point = None
-
-    if len(time_point_string) == 32 and time_point_string[29] == ':':
-        # Python cannot parse its own generated isoformat() string...
-        # We need to get rid of the semicolon.
-        time_point_string = time_point_string[:29] + \
-            time_point_string[30:]
-        format = "%Y-%m-%dT%H:%M:%S.%f%z"
-
-        try:
-            time_point = datetime.strptime(time_point_string, format)
-        except:
-            pass
-    else:
-
-        format = "%Y-%m-%dT%H:%M:%S.%f"
-
-        try:
-            time_point = datetime.strptime(time_point_string, format)
-        except:
-            pass
-
-    # TODO Handle other time formats.
-
-    if time_point is None:
-        raise ValueError(
-            "time point must be formatted according to ISO 8601 "
-            "('{}')".format(time_point_string))
+    time_point = dateutil.parser.parse(time_point_string)
 
     if not is_aware(time_point):
         time_point = make_aware(time_point)

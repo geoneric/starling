@@ -25,11 +25,11 @@ setuptools.setup(
     author="Kor de Jong",
     author_email="k.dejong@geoneric.eu",
     url="https://github.com/geoneric/starling",
-    packages=setuptools.find_packages(),  # "source"),
-    # package_dir={"": "source"},
+    packages=setuptools.find_packages(),
     install_requires=[
         "flask>=0.11",
-        "tzlocal>=1.3",
+        "python_dateutil>=2",
+        "tzlocal>=1",
     ],
     license="MIT License",
     classifiers=[

@@ -31,6 +31,7 @@ class TemplateFilterTest(TestCase):
         self.assertDoesNotRaise(datetime.strptime, string,
             "%Y-%m-%dT%H:%M:%S")
 
+
         # Unaware time point.
         now_string = datetime.utcnow().isoformat()
 
@@ -40,3 +41,12 @@ class TemplateFilterTest(TestCase):
 
         self.assertDoesNotRaise(datetime.strptime, string,
             "%Y-%m-%dT%H:%M:%S")
+
+
+        # Use case, asumes whe're in UTC+1.
+        now_string = "2017-02-02T10:28:17.090295+00:00"
+
+        self.assertDoesNotRaise(format_time_point, now_string)
+
+        string = format_time_point(now_string)
+        self.assertEqual(string, "2017-02-02T11:28:17")
