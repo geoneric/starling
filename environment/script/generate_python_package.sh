@@ -16,9 +16,16 @@ python setup.py sdist
 # Install package in virtual environment and perform some tests.
 rm -fr $tmp_prefix/python
 # virtualenv --system-site-package $tmp_prefix/python
-virtualenv $tmp_prefix/python
+virtualenv -p `which python` $tmp_prefix/python
 source $tmp_prefix/python/bin/activate
-pip install --find-links=file://`pwd`/dist "starling==$starling_version"
+
+# If we stay in the current directory, pip assumes the starling package
+# is already installed. Apparently, dist is special. Just move into
+# dist.
+cd dist
+pip install --find-links=file://`pwd` "starling==$starling_version"
+cd ..
+
 tree $tmp_prefix/python/lib/python*/site-packages/starling*
 
 
@@ -32,4 +39,4 @@ echo "********************************************************"
 
 # Upload distributions.
 pip install twine
-# twine upload dist/starling-${starling_version}.tar.gz
+twine upload dist/starling-${starling_version}.tar.gz
