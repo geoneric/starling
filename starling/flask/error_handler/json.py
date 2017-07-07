@@ -28,7 +28,7 @@ def response(
         "status_code": code,
         "message": description
     })
-    print(type(payload))
+    # print(type(payload))
 
     return payload, code
 
