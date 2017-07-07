@@ -5,7 +5,7 @@ set -e
 # source_prefix="$PROJECTS/starling"
 tmp_prefix="$HOME/tmp/starling"
 # install_prefix="$tmp_prefix/install"
-starling_version="0.0.5"
+starling_version="0.0.6"
 
 # cd $source_prefix
 

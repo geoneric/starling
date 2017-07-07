@@ -2,6 +2,11 @@ Changes
 =======
 
 
+0.0.6
+-----
+- Add ``pika.decorator`` module
+
+
 0.0.5
 -----
 - Add ``flask.template_filter.format_uuid``
