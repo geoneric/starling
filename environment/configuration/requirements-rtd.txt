@@ -1,2 +1,2 @@
-flask==0.11
+flask==1.0
 tzlocal==1.3
